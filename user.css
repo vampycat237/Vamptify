@@ -118,14 +118,14 @@ button {
 	padding-bottom: 0;
 }
 
-/*this is for the main-topBar-container widgets, this container lets us move the icons!*/
+/*this is for the main-topBar-container widgets, this container lets us move the icons!
 .hte6oQTQDvadfi5BA9eN {
 	position: fixed;
 	right: 141px;
 	top: 0px;
-}
+}*/
 
-/* old version of this ^
+/* old version of this ^ which has been re-implemented because the container thing no longer exists. sigh */
 .main-topBar-container> .main-userWidget-boxCondensed, .main-topBar-container > .main-topBar-buddyFeed, .main-topBar-container > .main-noConnection {
 	position: fixed;
 	top: 0px;
@@ -142,7 +142,7 @@ button {
 
 .main-topBar-container > .main-noConnection {
 	right: 217px;
-}*/
+}
 
 /*adjust remaining topbar*/
 .nav-ylx .main-topBar-container {
