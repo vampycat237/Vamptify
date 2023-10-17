@@ -1,0 +1,432 @@
+/*welcome welcome! if this is your first time looking at a vampycat style sheet, i'm so sorry. this is organized so much worse than my stylesheets usually are.*/
+:root {
+	--player-bar-height: 105px;
+
+	/*default tint values, will be replaced by the paired extension*/
+	--spice-filter-brightness: 1.75;
+	--spice-filter-hue-rotate: -52.75deg;
+	--spice-filter-saturate: 0.58;
+
+	/*default lyrics background image, replaced by the paired extension*/
+	--spice-imgurl-lyrics: url(spotify:image:ab67616d0000b273b81012d5597e8ef61ab62a97);
+}
+
+/*style changes (making everything more compact)*/
+
+li.main-yourLibraryX-navItem, .main-yourLibraryX-header, .main-yourLibraryX-libraryRootlist, .main-yourLibraryX-libraryFilter {
+	margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+#spicetify-sticky-list {
+    padding: 0 0 0 5px;
+}
+
+/*the text does NOT need to be that big imo. however if you're having difficulties reading it please comment this out or manually increase it*/
+#spicetify-playlist-list {
+	font-size: 12px;
+}
+
+button {
+	font-size: inherit;
+	font-optical-sizing: none;
+	font-stretch: normal;
+}
+
+.main-yourLibraryX-filters {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.main-entityHeader-container, .main-buddyFeed-header {
+	padding: 0 !important;
+}
+
+.main-buddyFeed-content {
+	padding: 0 0 0 8px;
+}
+
+.main-entityHeader-container.main-entityHeader-nonWrapped {
+    height: 30vh;
+    max-height: 400px;
+    min-height: 296px;
+	min-height: 100px;
+	margin-top: 64px;
+}
+
+.main-entityHeader-headerText {
+	/*padding-bottom: 0px*/
+	justify-content: center;
+}
+
+.nav-ylx .main-trackList-trackListHeader {
+	margin-right: 0;
+	padding-right: 0;
+}
+
+/*playlist detail labels - make em not overlap the text area!*/
+/*also i want the playlist text to be legible so let's make the focus color different*/
+.main-playlistEditDetailsModal-textElement {
+	margin-top: 5px;
+}
+
+.main-playlistEditDetailsModal-textElement:focus {
+	background-color: var(--spice-card);
+}
+
+.main-playlistEditDetailsModal-title {
+	margin-top: -5px;
+}
+
+.main-playlistEditDetailsModal-description {
+	margin-top: -1px;
+}
+
+/*playlist & album cover image sizing*/
+.playlist-playlist-playlistImageContainer, .main-entityHeader-imageContainer {
+	height: 100%;
+	width: auto;
+}
+
+/*album expanded cover image thing. first is the thing itself second is its container.*/
+.main-coverSlotExpanded-container, .t7MWRVQ5CiKOG9qsz81y {
+	width: 100%;
+}
+
+/*button size fixes*/
+.main-playButton-PlayButton {
+	--size: 48px;
+}
+
+/*end button size fixes*/
+
+.spotify__os--is-windows .nav-ylx .main-buddyFeed-content {
+	margin-top: 0;
+	padding-top: 0;
+}
+
+/*topbar pieces -> tippy top*/
+.main-topBar-historyButtons {
+	padding: 10px;
+	height: auto;
+	height: 40px;
+	position: fixed;
+	top: 0px;
+	left: 60px;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+/*this is for the main-topBar-container widgets, this container lets us move the icons!*/
+.hte6oQTQDvadfi5BA9eN {
+	position: fixed;
+	right: 141px;
+	top: 0px;
+}
+
+/* old version of this ^
+.main-topBar-container> .main-userWidget-boxCondensed, .main-topBar-container > .main-topBar-buddyFeed, .main-topBar-container > .main-noConnection {
+	position: fixed;
+	top: 0px;
+	background-color: var(--spice-shadow);
+}
+
+.main-topBar-container > .main-userWidget-boxCondensed {
+	right: 141px;
+}
+
+.main-topBar-container > .main-topBar-buddyFeed {
+	right: 179px;
+}
+
+.main-topBar-container > .main-noConnection {
+	right: 217px;
+}*/
+
+/*adjust remaining topbar*/
+.nav-ylx .main-topBar-container {
+	padding: 0 10px;
+}
+
+.queue-queuePage-queuePage, #searchPage {
+	margin-top: 64px;
+}
+
+/*make square*/
+.main-topBar-button {
+	border-radius: 0 !important;
+	width: 64px !important;
+}
+
+.main-view-container__scroll-node-child-spacer {
+    height: 0px;
+}
+
+.contentSpacing {
+	--content-spacing: 10px;
+}
+
+.main-trackList-trackList {
+	margin: -10px;
+}
+
+.main-trackList-trackListHeader {
+	top: 60px !important;
+}
+
+.main-shelf-seeAll {
+	margin-right: 35px;
+}
+
+.spotify__container--is-desktop.spotify__os--is-windows .main-view-container__scroll-node>.os-scrollbar-vertical {
+	top: 0px;
+	bottom: 0px;
+}
+
+.os-theme-spotify>.os-scrollbar-horizontal {
+	left: 0px;
+	right: 0px;
+}
+
+
+/*LYRICS stuff*/
+
+/*lyrics background: soften with silly gradient*/
+/*.lyrics-lyrics-background {
+	background-image: linear-gradient(rgba(var(--spice-rgb-highlight), 0.1), rgba(var(--spice-rgb-highlight), 0.1));
+	/*background-image: linear-gradient(rgba(var(--spice-rgb-shadow),.6) 0,rgba(var(--spice-rgb-main), .6) 100%),var(--background-noise);*/
+/*}*/
+
+/*lyrics background: set it to be an image! extension pulls the album cover*/
+.lyrics-lyrics-background {
+	background-image: var(--spice-imgurl-lyrics);
+	background-size: cover;
+	filter: opacity(0.7) contrast(0.5) brightness(0.8);
+}
+
+/*blurs the lyrics background! for the image version. first class is the couldn't find lyrics text i believe*/
+.oNqyFdyc0Z01aWTF8qtF, .lyrics-lyrics-contentContainer {
+	backdrop-filter: blur(5px);
+}
+
+/*lyric color changes*/
+.lyrics-lyricsContent-lyric.lyrics-lyricsContent-highlight {
+	color: var(--lyrics-color-background);
+	filter: brightness(1.5);
+}
+
+
+/*color changes*/
+
+/*spotify green TINT to match activebutton. values are set to match colorscheme by the extension. used on playing icon and heart animation*/
+.main-trackList-playingIcon, .control-button-heart > svg:not([role="img"]), .main-trackList-rowHeartButton > svg:not([role="img"]), .main-addButton-active > svg:not([role="img"]), .x-settings-equalizerPanelCanvas {
+	filter: brightness(var(--spice-filter-brightness)) hue-rotate(var(--spice-filter-hue-rotate)) saturate(var(--spice-filter-saturate)); /*adapts to theme w/ extension, or defaults to cybermoth*/
+}
+
+.encore-dark-theme {
+	--text-subdued: var(--spice-text-subdued);
+	--essential-subdued: var(--spice-misc);
+	--background-elevated-base: var(--spice-main);
+    --background-elevated-highlight: var(--spice-highlight);
+	--decorative-subdued: var(--spice-text-subdued);
+	--text-announcement: var(--spice-button-active);
+	--essential-announcement: var(--spice-button);
+}
+
+.TypeElement-ballad-textBase-type {
+    color: var(--spice-subtext);
+}
+
+.UyzJidwrGk3awngSGIwv,.poz9gZKE7xqFwgk231J4,.xWm_uA0Co4SXVxaO7wlB {
+	color: var(--spice-button-active);
+}
+
+.x-filterBox-expandButton, .x-sortBox-sortDropdown {
+    color: var(--spice-selected-row);
+}
+
+/*progress bars*/
+
+.x-progressBar-fillColor {
+	background-color: var(--spice-button);
+}
+
+.playback-progressbar-isInteractive .DuvrswZugGajIFNXObAr .x-progressBar-fillColor,.playback-progressbar-isInteractive .progress-bar:focus .x-progressBar-fillColor,.playback-progressbar-isInteractive .progress-bar:hover .x-progressBar-fillColor,.playback-progressbar-isInteractive:focus-within .x-progressBar-fillColor {
+	background-color: var(--spice-button-active);
+}
+
+/*change slider handle to use a sprite!*/
+.progress-bar__slider {
+	background-image: url(https://i.imgur.com/39td02a.png);
+	background-color: transparent;
+	background-size: contain;
+	height: 16px; width: 16px;
+	box-shadow: unset;
+	border-radius: 0;
+}
+
+/*buttons*/
+
+/*play buttons (activebutton -> text)*/
+.main-playPauseButton-button {
+	background-color: var(--spice-button-active);
+}
+.main-playPauseButton-button:hover {
+	background-color: var(--spice-text);
+}
+
+/*removed bc of an issue where the playlist play button had a middle square that would flicker between hovered and unhovered colors if moused over too quickly*/
+/*.main-playButton-PlayButton:hover .ButtonInner-lg-iconOnly, .main-playButton-PlayButton:hover .ButtonInner-md-iconOnly {
+	background-color: var(--spice-text);
+}*/
+
+/*other (button -> activebutton)*/
+.main-shuffleButton-button, .main-shuffleButton-button:focus:not(:focus-visible,:hover), .main-skipBackButton-button, .main-skipForwardButton-button, .main-repeatButton-button, .main-repeatButton-button:focus:not(:focus-visible,:hover), .main-actionBar-ActionBarRow button, .x-contributorButton-ContributorButton {
+	color: var(--spice-button);
+	border-color: var(--spice-button);
+}
+
+.main-shuffleButton-button:hover, .main-skipBackButton-button:hover, .main-skipForwardButton-button:hover, .main-repeatButton-button:hover, .main-actionBar-ActionBarRow button:hover, .x-contributorButton-ContributorButton:hover {
+	color: var(--spice-button-active);
+	border-color: var(--spice-button-active);
+}
+
+.main-shuffleButton-button.main-shuffleButton-active, .main-shuffleButton-button.main-shuffleButton-active:not([disabled]):focus:not(:focus-visible,:hover), .main-repeatButton-button.main-repeatButton-active, .main-repeatButton-button.main-repeatButton-active:not([disabled]):focus:not(:focus-visible,:hover) {
+	color: var(--spice-button-active);
+}
+
+.main-genericButton-button.main-genericButton-buttonActive:hover:after, input:hover:not([disabled],:active)~.x-toggle-indicatorWrapper {
+	background-color: var(--spice-button-active);
+}
+
+/*.x-toggle-indicatorWrapper {
+	background-color: var(--spice-highlight);
+}
+
+/*input:hover:not([disabled],:active)~.x-toggle-indicatorWrapper {
+	background-color: var(--spice-card);
+}
+
+/*.main-repeatButton-button.main-repeatButton-active {
+	color: var(--spice-misc);
+}*/
+
+.main-entityHeader-metaDataText {
+	color: var(--spice-misc);
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.TypeElement-mesto-type {
+	color: inherit;
+	font-weight: inherit;
+}
+
+.playlist-playlist-playlistDescription {
+	color: var(--spice-button-active);
+}
+
+/*heart button*/
+.control-button-heart[aria-checked=false], .main-addButton-button {
+	color: var(--spice-selected-row);
+}
+
+.control-button-heart[aria-checked=false]:hover, .main-addButton-button[aria-checked=false]:hover {
+	color: var(--spice-misc);
+}
+
+.control-button-heart[aria-checked=true] {
+	color: var(--spice-button);
+}
+
+.control-button-heart[aria-checked=true]:hover {
+	color: var(--spice-button-active);
+}
+
+/*subdued buttons*/
+.Button-sm-16-buttonTertiary-iconOnly-useBrowserDefaultFocusStyle, .control-button, .main-topBar-buddyFeed {
+	color: var(--spice-selected-row);
+}
+
+.Button-sm-16-buttonTertiary-iconOnly-useBrowserDefaultFocusStyle:hover, .control-button:hover, .main-topBar-buddyFeed:hover {
+	color: var(--spice-button);
+}
+
+/*activity badge on friends list*/
+.main-avatar-avatar.main-avatar-withBadge:after {
+	background: radial-gradient(circle at top left, var(--spice-button-active), var(--spice-button-active), var(--spice-notification));
+}
+
+/*buddyfeed stuff!*/
+.main-buddyFeed-activityMetadata .main-buddyFeed-username a {
+	color: var(--spice-misc);
+}
+
+.main-buddyFeed-activityMetadata .main-buddyFeed-artistAndTrackName a {
+	color: var(--spice-button);
+}
+
+.main-buddyFeed-activityMetadata .main-buddyFeed-playbackContextLink {
+	color: var(--spice-card);
+}
+
+/*buddyfeed text when buddyfeed is hovered*/
+.main-buddyFeed-activityMetadata:hover .main-buddyFeed-artistAndTrackName a, .main-buddyFeed-activityMetadata:hover .main-buddyFeed-playbackContextLink, .main-buddyFeed-activityMetadata:hover .main-buddyFeed-timestamp {
+	transition: 0.3s;
+}
+
+.main-buddyFeed-activityMetadata:hover .main-buddyFeed-artistAndTrackName a {
+	color: var(--spice-subtext);
+}
+
+.main-buddyFeed-activityMetadata:hover .main-buddyFeed-playbackContextLink, .main-buddyFeed-activityMetadata:hover .main-buddyFeed-timestamp {
+	color: var(--spice-text-subdued);
+}
+
+/*.main-buddyFeed-activityMetadata .main-buddyFeed-username a:focus, .main-buddyFeed-activityMetadata .main-buddyFeed-username a:hover {
+	color: var(--spice-subtext);
+}*/
+
+.main-buddyFeed-activityMetadata .main-buddyFeed-artistAndTrackName a:focus, .main-buddyFeed-activityMetadata .main-buddyFeed-artistAndTrackName a:hover {
+	color: var(--spice-text);
+}
+
+.main-buddyFeed-activityMetadata .main-buddyFeed-playbackContextLink:hover, .main-buddyFeed-activityMetadata .main-buddyFeed-playbackContextLink:focus {
+	color: var(--spice-button-active);
+}
+
+.main-buddyFeed-activityMetadata .main-buddyFeed-username a, .main-buddyFeed-activityMetadata .main-buddyFeed-artistAndTrackName a, .main-buddyFeed-activityMetadata .main-buddyFeed-playbackContextLink {
+	font-size: 14px;
+}
+
+/*dropdown text*/
+.main-dropDown-dropDown {
+	color: var(--spice-main);
+}
+
+/*color opacity changes*/
+
+.main-yourLibraryX-listItem {
+	--background-tinted-base: rgba(var(--spice-rgb-selected-row), .3);
+    --background-tinted-highlight: rgba(var(--spice-rgb-selected-row), .5);
+    --background-tinted-press: rgba(var(--spice-rgb-selected-row), .2);
+}
+
+/*remove scale changes*/
+.Button-sm-buttonSecondary-useBrowserDefaultFocusStyle:hover, .main-playButton-PlayButton:focus, .main-playButton-PlayButton:hover, .Button-lg-buttonPrimary-useBrowserDefaultFocusStyle:hover .ButtonInner-sc-14ud5tc-0, .Button-lg-buttonPrimary-useBrowserDefaultFocusStyle:hover .ButtonFocus-sc-2hq6ey-0, .Button-md-buttonPrimary-useBrowserDefaultFocusStyle:hover .ButtonInner-sc-14ud5tc-0 {
+	transform: none;
+}
+
+/*buttons go spin!*/
+@media(prefers-reduced-motion:no-preference) {
+	.main-topBar-buddyFeed:hover, .main-userWidget-boxCondensed:hover, .main-buddyFeed-actions > :hover, .main-nowPlayingBar-extraControls button:hover, .player-controls__buttons button:hover, .main-addButton-button:hover, .control-button-heart:hover, .main-actionBar-ActionBarRow button:hover svg, .main-buddyFeed-avatarContainer:hover .main-avatar-avatar, .main-buddyFeed-avatarContainer:hover button, .search-searchCategory-carousel > button:hover, .main-yourLibraryX-filterArea button[aria-label="Clear filters"]:hover, .main-yourLibraryX-headerContent button:hover svg, .main-yourLibraryX-navItems a:hover svg, .main-trackList-rowSectionEnd button:hover, .main-trackList-rowImagePlayButton:hover, .main-playButton-PlayButton:hover .ButtonInner-md-iconOnly, /*.Button-sm-buttonSecondary-useBrowserDefaultFocusStyle:hover,*/ .x-filterBox-expandButton:hover {
+		transform: rotate(10deg);
+		transition: 0.3s;
+	}
+
+	.player-controls__buttons .main-playPauseButton-button:hover, .main-buddyFeed-avatarContainer:hover .main-avatar-avatar {
+		transform: rotate(370deg);
+		transition: 0.6s ease;
+	}
+}
