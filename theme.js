@@ -13,6 +13,7 @@
     tintValues.set('moonlit-waves', [1.75, '52.75deg', 0.80]);
     tintValues.set('sun-at-night', [3.00, '-115.75deg', 0.90]);
     tintValues.set('vibe', [3.00, '-115.75deg', 0.90]);
+    tintValues.set('beyond-our-stars', [1.60, '100deg', 1.00]);
 
     /**
      * Sets the tint values in the CSS.

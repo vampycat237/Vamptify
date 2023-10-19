@@ -221,7 +221,7 @@ button {
 
 /*spotify green TINT to match activebutton. values are set to match colorscheme by the extension. used on playing icon and heart animation*/
 .main-trackList-playingIcon, .control-button-heart > svg:not([role="img"]), .main-trackList-rowHeartButton > svg:not([role="img"]), .main-addButton-active > svg:not([role="img"]), .x-settings-equalizerPanelCanvas {
-	filter: brightness(var(--spice-filter-brightness)) hue-rotate(var(--spice-filter-hue-rotate)) saturate(var(--spice-filter-saturate)); /*adapts to theme w/ extension, or defaults to cybermoth*/
+	filter: hue-rotate(var(--spice-filter-hue-rotate)) brightness(var(--spice-filter-brightness)) saturate(var(--spice-filter-saturate)); /*adapts to theme w/ extension, or defaults to cybermoth*/
 }
 
 .encore-dark-theme {
@@ -345,11 +345,11 @@ button {
 }
 
 /*subdued buttons*/
-.Button-sm-16-buttonTertiary-iconOnly-useBrowserDefaultFocusStyle, .control-button, .main-topBar-buddyFeed {
+.Button-sm-16-buttonTertiary-iconOnly-useBrowserDefaultFocusStyle, .control-button, .main-topBar-buddyFeed, .Button-sm-16-buttonTertiary-iconOnly-isUsingKeyboard-useBrowserDefaultFocusStyle {
 	color: var(--spice-selected-row);
 }
 
-.Button-sm-16-buttonTertiary-iconOnly-useBrowserDefaultFocusStyle:hover, .control-button:hover, .main-topBar-buddyFeed:hover {
+.Button-sm-16-buttonTertiary-iconOnly-useBrowserDefaultFocusStyle:hover, .control-button:hover, .main-topBar-buddyFeed:hover, .Button-sm-16-buttonTertiary-iconOnly-isUsingKeyboard-useBrowserDefaultFocusStyle:hover {
 	color: var(--spice-button);
 }
 
