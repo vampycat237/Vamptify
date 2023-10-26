@@ -60,9 +60,9 @@ button {
 	justify-content: center;
 }
 
-.nav-ylx .main-trackList-trackListHeader {
-	margin-right: 0;
-	padding-right: 0;
+/*stop this from causing the main view to overflow horizontally!*/
+.main-trackList-trackListHeader {
+	margin: 0;
 }
 
 /*playlist detail labels - make em not overlap the text area!*/
@@ -118,6 +118,29 @@ button {
 	padding-bottom: 0;
 }
 
+/* take 3 at moving the right control buttons to the top - what if we move .main-topBar-container, and then move the other children back? */
+.main-topBar-container {
+	position: relative;
+	top: -40px;
+	padding: 0 var(--content-spacing);
+	padding-right: 141px;
+	align-items: start;
+	justify-content: end;
+}
+
+/*moves topbar main stuff back to where it should be*/
+.main-topBar-container > .main-topBar-background {
+	/* position: fixed; */
+	top: 40px;
+	bottom: -40px;
+	/* right: 0; */
+}
+
+.main-topBar-container > .main-topBar-topbarContentWrapper {
+	position: relative;
+	top: 48px;
+}
+
 /*this is for the main-topBar-container widgets, this container lets us move the icons!
 .hte6oQTQDvadfi5BA9eN {
 	position: fixed;
@@ -126,13 +149,13 @@ button {
 }*/
 
 /* old version of this ^ which has been re-implemented because the container thing no longer exists. sigh */
-.main-topBar-container> .main-userWidget-boxCondensed, .main-topBar-container > .main-topBar-buddyFeed, .main-topBar-container > .main-noConnection {
-	position: fixed;
-	top: 0px;
-	background-color: var(--spice-shadow);
+.main-topBar-container .encore-over-media-set {
+	/*position: fixed;
+top: 0px;*/
+	--background-base: var(--spice-shadow);
 }
 
-.main-topBar-container > .main-userWidget-boxCondensed {
+/*.main-topBar-container > .main-userWidget-boxCondensed {
 	right: 141px;
 }
 
@@ -142,7 +165,7 @@ button {
 
 .main-topBar-container > .main-noConnection {
 	right: 217px;
-}
+}*/
 
 /*adjust remaining topbar*/
 .nav-ylx .main-topBar-container {
