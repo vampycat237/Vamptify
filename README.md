@@ -4,7 +4,7 @@ Vamptify includes a little extension to help it do some fancy stuff like setting
 this document is here to walk you through setting up the theme so it works properly and such :o should be pretty straightforward!!
 
 # setup instructions
-without further ado, here are the setup instructions! [make sure you have install spicetify installed first](https://spicetify.app/docs/getting-started#installation)
+without further ado, here are the setup instructions! [make sure you have spicetify installed first](https://spicetify.app/docs/getting-started#installation)
 
 - extract the .zip to a new folder in spicetify's Themes directory (https://spicetify.app/docs/development/themes)
 - pick a color scheme! open up colors.ini with anything that can open text files (notepad will work just fine), and look for the stuff in [brackets] - those are the names of the colorschemes! right below the name is a description of what it should look like.
