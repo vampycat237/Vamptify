@@ -13,7 +13,6 @@
     tintValues.set('moonlit-waves', [1.75, '52.75deg', 0.80]);
     tintValues.set('sun-at-night', [3.00, '-115.75deg', 0.90]);
     tintValues.set('vibe', [3.00, '-115.75deg', 0.90]);
-    tintValues.set('beyond-our-stars', [1.60, '100deg', 1.00]);
 
     /**
      * Sets the tint values in the CSS.
@@ -33,8 +32,9 @@
 
     /**Sets the Lyrics background to the album cover of the current song.*/
     function setLyricsBackgroundImage() {
+
         // grab the current song's album cover via track metadata, and sets it as the lyrics background image url
-        document.documentElement.style.setProperty('--spice-imgurl-lyrics', "url("+Spicetify.Player.data.track.metadata.image_xlarge_url+")");
+        document.documentElement.style.setProperty('--spice-imgurl-lyrics', "url("+Spicetify.Player.data.item.album.images[3].url+")");
     }
 
     /**Gets everything up and running!*/
@@ -49,6 +49,9 @@
 
         // If there's a song open already, load that album cover bg!
         if (Spicetify.Player.data) setLyricsBackgroundImage();
+        else { 
+            console.log("vamptify: setting timeout to load lyrics background image")
+            setTimeout(setLyricsBackgroundImage, delay + 800) }
 
         // Set up event listener for the lyrics background :>
         Spicetify.Player.addEventListener("songchange", () => { setLyricsBackgroundImage() });
