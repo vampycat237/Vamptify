@@ -60,9 +60,9 @@ button {
 	justify-content: center;
 }
 
-/*stop this from causing the main view to overflow horizontally!*/
-.main-trackList-trackListHeader {
-	margin: 0;
+.nav-ylx .main-trackList-trackListHeader {
+	margin-right: 0;
+	padding-right: 0;
 }
 
 /*playlist detail labels - make em not overlap the text area!*/
@@ -112,33 +112,10 @@ button {
 	height: auto;
 	height: 40px;
 	position: fixed;
-	top: 0px;
-	left: 60px;
+	top: 16px;
+	left: 6px;
 	padding-top: 0;
 	padding-bottom: 0;
-}
-
-/* take 3 at moving the right control buttons to the top - what if we move .main-topBar-container, and then move the other children back? */
-.main-topBar-container {
-	position: relative;
-	top: -40px;
-	padding: 0 var(--content-spacing);
-	padding-right: 141px;
-	align-items: start;
-	justify-content: end;
-}
-
-/*moves topbar main stuff back to where it should be*/
-.main-topBar-container > .main-topBar-background {
-	/* position: fixed; */
-	top: 40px;
-	bottom: -40px;
-	/* right: 0; */
-}
-
-.main-topBar-container > .main-topBar-topbarContentWrapper {
-	position: relative;
-	top: 48px;
 }
 
 /*this is for the main-topBar-container widgets, this container lets us move the icons!
@@ -149,13 +126,13 @@ button {
 }*/
 
 /* old version of this ^ which has been re-implemented because the container thing no longer exists. sigh */
-.main-topBar-container .encore-over-media-set {
-	/*position: fixed;
-top: 0px;*/
-	--background-base: var(--spice-shadow);
+.main-topBar-container> .main-userWidget-boxCondensed, .main-topBar-container > .main-topBar-buddyFeed, .main-topBar-container > .main-noConnection {
+	position: fixed;
+	top: 0px;
+	background-color: var(--spice-shadow);
 }
 
-/*.main-topBar-container > .main-userWidget-boxCondensed {
+.main-topBar-container > .main-userWidget-boxCondensed {
 	right: 141px;
 }
 
@@ -165,7 +142,7 @@ top: 0px;*/
 
 .main-topBar-container > .main-noConnection {
 	right: 217px;
-}*/
+}
 
 /*adjust remaining topbar*/
 .nav-ylx .main-topBar-container {
@@ -176,11 +153,11 @@ top: 0px;*/
 	margin-top: 64px;
 }
 
-/*make square*/
-.main-topBar-button {
+/*make square... i am so sad to see you go rectangles*/
+/*.main-topBar-button {
 	border-radius: 0 !important;
 	width: 64px !important;
-}
+}*/
 
 .main-view-container__scroll-node-child-spacer {
     height: 0px;
@@ -244,7 +221,7 @@ top: 0px;*/
 
 /*spotify green TINT to match activebutton. values are set to match colorscheme by the extension. used on playing icon and heart animation*/
 .main-trackList-playingIcon, .control-button-heart > svg:not([role="img"]), .main-trackList-rowHeartButton > svg:not([role="img"]), .main-addButton-active > svg:not([role="img"]), .x-settings-equalizerPanelCanvas {
-	filter: hue-rotate(var(--spice-filter-hue-rotate)) brightness(var(--spice-filter-brightness)) saturate(var(--spice-filter-saturate)); /*adapts to theme w/ extension, or defaults to cybermoth*/
+	filter: brightness(var(--spice-filter-brightness)) hue-rotate(var(--spice-filter-hue-rotate)) saturate(var(--spice-filter-saturate)); /*adapts to theme w/ extension, or defaults to cybermoth*/
 }
 
 .encore-dark-theme {
@@ -368,11 +345,11 @@ top: 0px;*/
 }
 
 /*subdued buttons*/
-.Button-sm-16-buttonTertiary-iconOnly-useBrowserDefaultFocusStyle, .control-button, .main-topBar-buddyFeed, .Button-sm-16-buttonTertiary-iconOnly-isUsingKeyboard-useBrowserDefaultFocusStyle {
+.Button-sm-16-buttonTertiary-iconOnly-useBrowserDefaultFocusStyle, .control-button, .main-topBar-buddyFeed {
 	color: var(--spice-selected-row);
 }
 
-.Button-sm-16-buttonTertiary-iconOnly-useBrowserDefaultFocusStyle:hover, .control-button:hover, .main-topBar-buddyFeed:hover, .Button-sm-16-buttonTertiary-iconOnly-isUsingKeyboard-useBrowserDefaultFocusStyle:hover {
+.Button-sm-16-buttonTertiary-iconOnly-useBrowserDefaultFocusStyle:hover, .control-button:hover, .main-topBar-buddyFeed:hover {
 	color: var(--spice-button);
 }
 
