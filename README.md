@@ -11,9 +11,9 @@ without further ado, here are the setup instructions! [make sure you have instal
 - open up powershell (you can either search the start menu or do Windows+R and type "powershell"!)
 - enter the following one line at a time, replacing <your-color-scheme> with the name of the color scheme you choose (no brackets):
 
-spicetify config current_theme Vamptify
-spicetify config color_scheme <your-color-scheme>
-spicetify apply
+<code>spicetify config current_theme Vamptify
+ spicetify config color_scheme \<your-color-scheme\>
+ spicetify apply</code>
 
 - and you should be all good!
 - (if spicetify suggests you do another command first before any step, go ahead and do it, then come back to the step!)
