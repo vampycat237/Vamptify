@@ -77,7 +77,7 @@
             const coverArtImages = document.getElementsByClassName("cover-art-image");
 
             // If there are cover art elements, grab one.
-            if (coverArtImages.length > 0) {
+            if (coverArtImages.length > 0 || !coverArtImages[0].src) {
                 // There may be multiple - just choose the first one.
                 return coverArtImages[0].src;
             }
