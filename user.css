@@ -28,6 +28,15 @@ li.main-yourLibraryX-navItem, .main-yourLibraryX-header, .main-yourLibraryX-libr
 	font-size: 12px;
 }
 
+.main-yourLibraryX-listItem .encore-text {
+	font-size: var(--encore-text-size-smaller);
+}
+
+.BoxComponent-group-listRow-naked-isInteractive-minBlockSize_32px-padding_4px_8px, .BoxComponent-group-listRow-tinted-isInteractive-minBlockSize_32px-padding_4px_8px {
+	min-block-size: 24px;
+	padding: 1px 0;
+}
+
 button {
 	font-size: inherit;
 	font-optical-sizing: none;
@@ -41,6 +50,10 @@ button {
 
 .main-entityHeader-container, .main-buddyFeed-header {
 	padding: 0 !important;
+}
+
+.main-entityHeader-container .contentSpacing {
+	padding-left: 0;
 }
 
 .main-buddyFeed-content {
@@ -269,10 +282,14 @@ button {
 /*buttons*/
 
 /*play buttons (activebutton -> text)*/
-.main-playPauseButton-button {
+.main-playPauseButton-button, .player-controls__buttons>*[aria-label=Play]>span {
 	background-color: var(--spice-button-active);
 }
-.main-playPauseButton-button:hover {
+.main-playPauseButton-button:hover, .player-controls__buttons > *[aria-label=Play]:hover > span {
+	background-color: var(--spice-text);
+}
+/*fixes playlist play button*/
+.Button-buttonPrimary-useBrowserDefaultFocusStyle-data-is-icon-only:hover .ButtonInner-sc-14ud5tc-0 {
 	background-color: var(--spice-text);
 }
 
@@ -286,8 +303,16 @@ button {
 	color: var(--spice-button);
 	border-color: var(--spice-button);
 }
+.player-controls__buttons > button { /*1.0.6*/
+	color: var(--spice-button);
+	border-color: var(--spice-button);
+}
 
 .main-shuffleButton-button:hover, .main-skipBackButton-button:hover, .main-skipForwardButton-button:hover, .main-repeatButton-button:hover, .main-actionBar-ActionBarRow button:hover, .x-contributorButton-ContributorButton:hover {
+	color: var(--spice-button-active);
+	border-color: var(--spice-button-active);
+}
+.player-controls__buttons > button:hover { /*1.0.6 - non-functional currently*/
 	color: var(--spice-button-active);
 	border-color: var(--spice-button-active);
 }
