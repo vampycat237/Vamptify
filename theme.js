@@ -20,6 +20,9 @@
 
     const defaultCoverArt = "spotify:image:ab67616d00001e02382ddf73e0132cecf399c718";
 
+    // TODO: Ensure this is updated for release 1.0.6
+    const themeVersion = "1.0.6a";
+
     /**
      * Sets the CSS properties for tint values based on the color scheme.
      * If the tint values cannot be found, this function does nothing.
@@ -89,6 +92,11 @@
         }
     }
 
+    function setAppTitle() {
+        Spicetify.AppTitle.set(Spicetify.AppTitle.get() + " with Vamptify " + themeVersion);
+        Spicetify.AppTitle.sub();
+    }
+
     /**
      * Gets everything up and running!
      * Waits until the Spicetify API objects it needs are ready, then assigns tint values and adds the event listener for song changes.
@@ -101,6 +109,7 @@
             return;
         }
         setFilterProperties();
+        setAppTitle();
 
         // If there's a song open already, load that album cover bg!
         // TODO: Current song is no longer in Player. Come up with some workaround
