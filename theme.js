@@ -2,8 +2,31 @@
 // AUTHOR: vampycat237
 // DESCRIPTION: Paired extension for Vamptify, provides necessary functionality for the theme :3
 
+/** Publically accessible parts of this extension can be interfaced with here.*/
+const VamptifyTheme = {
+    /** Holds strings displayed to user. For ease of translation / editing.*/
+    strings: {
+        // NOTIFICATIONS
+
+        /** Notify the user that they are using an old version of the theme. */
+        notification_old_version: "You're running an old version of Vamptify.",
+        /** 
+         * Ask the user, casually, if they want to update the theme.
+         * This is the display text for the update link in the notification bar.
+         */
+        notification_update: "Update Vamptify?",
+
+
+        // MENU ITEMS
+
+        /** Menu button text. Indicate to the user they can update their theme if they click here. */
+        menu_update: "Update Vamptify"
+    }
+}
+
 (function vampyHelper() {
-    /**Map that holds the tint values!
+    /**
+     * Map that holds the tint values!
      * format: theme-name, [brightness, hue-rotate, saturation]
      */
     const tintValues = new Map();
@@ -18,15 +41,22 @@
     tintValues.set('leaf', [1.75, '-52.75deg', 0.58]); // cybermoth
     tintValues.set('beyond-our-stars', [1.75, '52.75deg', 0.80]); // moonlit-waves
 
+    /** Spotify image URI used if the currently playing song's cover art can't be found.*/
     const defaultCoverArt = "spotify:image:ab67616d00001e02382ddf73e0132cecf399c718";
 
-    // TODO: Ensure this is updated for release 1.0.6
-    const themeVersion = "1.0.6a";
+    /** Release version of this theme. */
+    const themeVersion = "1.1.0a";
+    // 1.0.5 -> 1.1.0, as there are API changes (some strings are translatable and can be accessed externally)
+
+    /** Log signature. Identifies log statements created by this extension. */
+    const signature = "[vampytify] ";
+
+    /** Reference to the Menu button for updating the theme.*/
+    var menuUpdateBtn;
 
     /**
      * Sets the CSS properties for tint values based on the color scheme.
      * If the tint values cannot be found, this function does nothing.
-     * @returns
      */
     function setFilterProperties() {
         //checks if key exists - if not, let it default to however css assigns it
@@ -51,40 +81,37 @@
 
     /**
      * Fetches the URI of the album cover of the currently playing song.
-     * @returns {String}
+     * @returns {String} A Spotify image URI
      * */
     function getAlbumCover() {
         // Preferred method: Fetch image from song metadata.
 
-        // OUTDATED?
-        // Use Spicetify Player to get to the currently playing song.
-        if (Spicetify.Player && Spicetify.Player.data) {
-            log("fetching album cover from Player");
-            return Spicetify.Player.data.item.album.images[3].url;
-        }
-
-        // QUEUE is described in docs, but doesn't seem to be implemented.
-        // If that fails, try getting it from the queue
-        else if (Spicetify.Queue) {
+        // Spicetify now stores currently playing track in the Queue.
+        // Try getting it from the queue
+        if (Spicetify.Queue) {
             log("fetching album cover from Queue");
             // This is type ProvidedTrack which extends ContextTrack.
             const track = Spicetify.Queue.track;
             // Access the metadata of the ContextTrack to get the large image.
-            return track.metadata.image_large_url;
+            return track.contextTrack.metadata.image_large_url;
         }
 
-        // If all else fails, grab image from the playbar.
+        // Fall back on grabbing image from the playbar, or default image.
         else {
             log("fetching album cover from playbar");
             // Retrieve album cover elements. These are img elements whose src is the album art.
             const coverArtImages = document.getElementsByClassName("cover-art-image");
 
+            /* 
+             * This might return playlist or album cover images that aren't being played.
+             * This is most likely to occur if there's no song being played.
+             */
             // If there are cover art elements, grab one.
             if (coverArtImages.length > 0 || !coverArtImages[0].src) {
                 // There may be multiple - just choose the first one.
                 return coverArtImages[0].src;
             }
-            // There is no song playing right now - return the default cover art URI.
+            // There is no song playing right now, and no cover art on screen - return the default cover art URI.
             else {
                 warn("failed to fetch album cover, using default cover art");
                 return defaultCoverArt;
@@ -92,9 +119,35 @@
         }
     }
 
-    function setAppTitle() {
-        Spicetify.AppTitle.set(Spicetify.AppTitle.get() + " with Vamptify " + themeVersion);
+    /** Changes the default app title. Needs Spicetify.AppTitle to be initialized. */
+    async function setAppTitle() {
+        await Spicetify.AppTitle.set("Vamptify " + themeVersion);
         Spicetify.AppTitle.sub();
+    }
+
+    /**
+     * TODO
+     * Checks if the current Vamptify version is up-to-date.
+     * */
+    function checkForUpdate() {
+        // TODO: Check if Vamptify version is up-to-date.
+        if (false) {
+            // Show a notification to the user that their theme is out of date
+            Spicetify.showNotification(`${VamptifyTheme.strings.notification_old_version} <a href="https://github.com/vampycat237/Vamptify/releases/latest">${VamptifyTheme.strings.notification_update}</a>`)
+        }
+    }
+
+    /**
+     * Adds a button in the user menu which provides a link to the latest update
+     * */
+    function insertUpdateMenuButton() {
+        menuUpdateBtn = new Spicetify.Menu.Item(
+            VamptifyTheme.strings.menu_update,
+            true,
+            () => {
+                Spicetify.showNotification(`<a href="https://github.com/vampycat237/Vamptify/releases/latest">${VamptifyTheme.strings.notification_update}</a>`)
+            }
+        )
     }
 
     /**
@@ -103,33 +156,38 @@
      * */
     function init(delay = 100) {
         // make sure we're ready to start
-        if (!Spicetify.Config || !Spicetify.Player) {
+        if (!(Spicetify.Config && Spicetify.Player && Spicetify.AppTitle)) {
             // try again in a bit, stop this attempt tho!
             setTimeout(init, delay + 100);
             return;
         }
         setFilterProperties();
-        setAppTitle();
 
         // If there's a song open already, load that album cover bg!
         // TODO: Current song is no longer in Player. Come up with some workaround
         if (Spicetify.Player.data) setLyricsBackgroundImage();
         else { 
             log("setting timeout to load lyrics background image")
-            setTimeout(setLyricsBackgroundImage, delay + 800) }
+            setTimeout(setLyricsBackgroundImage, delay + 800)
+        }
 
         // Set up event listener for the lyrics background :>
         Spicetify.Player.addEventListener("songchange", () => { setLyricsBackgroundImage() });
+
+        // Do this last, since it has to await a promise. I forget if those pause execution, so we play it safe
+        setAppTitle();
     }
+
 
     /** Shorthand for console.log that prefixes logs with a signature. */
     function log(msg) {
-        console.log("vamptify: " + msg);
+        console.log(signature + msg);
     }
     /** Shorthand for console.warn that prefixes logs with a signature. */
     function warn(msg) {
-        console.warn("vamptify: " + msg);
+        console.warn(signature + msg);
     }
+
 
     // Init sets its own timeout, can safely be called at any time.
     init();
