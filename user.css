@@ -13,10 +13,17 @@
 
 /*style changes (making everything more compact)*/
 
+/*'your library' parts. here we remove vertical margins*/
 li.main-yourLibraryX-navItem, .main-yourLibraryX-header, .main-yourLibraryX-libraryRootlist, .main-yourLibraryX-libraryFilter {
 	margin-top: 0;
     margin-bottom: 0;
     padding: 0;
+}
+
+/*'your library' parts. here we remove horizontal margins*/
+.main-yourLibraryX-filters {
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 #spicetify-sticky-list {
@@ -28,6 +35,7 @@ li.main-yourLibraryX-navItem, .main-yourLibraryX-header, .main-yourLibraryX-libr
 	font-size: 12px;
 }
 
+/*'your library' list item text*/
 .main-yourLibraryX-listItem .encore-text {
 	font-size: var(--encore-text-size-smaller);
 }
@@ -43,21 +51,19 @@ button {
 	font-stretch: normal;
 }
 
-.main-yourLibraryX-filters {
-    margin-left: 0px;
-    margin-right: 0px;
-}
-
+/**
+ * 'Entity Header' is the transient topbar shown when scrolling down in track lists
+ * 'Buddy Feed Header' is currently unused.
+ *  I think it used to refer to the header of the Buddy Feed, but those elements
+ *  currently don't contain the term 'buddyFeed' in their classes.
+ *  (buddyFeed is only used in the button that shows this tab)
+ */
 .main-entityHeader-container, .main-buddyFeed-header {
 	padding: 0 !important;
 }
 
 .main-entityHeader-container .contentSpacing {
 	padding-left: 0;
-}
-
-.main-buddyFeed-content {
-	padding: 0 0 0 8px;
 }
 
 .main-entityHeader-container.main-entityHeader-nonWrapped {
@@ -73,6 +79,32 @@ button {
 	justify-content: center;
 }
 
+.main-buddyFeed-content {
+	padding: 0 0 0 8px;
+}
+
+.spotify__os--is-windows .nav-ylx .main-buddyFeed-content {
+	margin-top: 0;
+	padding-top: 0;
+}
+
+/* new buddyfeed styles */
+
+/*this is the list container, we want to take off its ugly top padding*/
+.gtJcoAXGeGQ9ochIvg6h {
+	padding-top: 0;
+}
+
+/* this is the style that applies padding to the buddy feed in the right side tab
+ * we want to take away the top and right padding to make better use of the space
+ */
+.zduvaX0Ioxqd5ypeWoAf {
+	padding-top: 0;
+	padding-right: 0;
+	margin-top: -16px;
+}
+
+/*trackListHeader is the ribbon that sits above the Track List, labelling the columns of information.*/
 .nav-ylx .main-trackList-trackListHeader {
 	margin-right: 0;
 	padding-right: 0;
@@ -96,27 +128,10 @@ button {
 	margin-top: -1px;
 }
 
-/*playlist & album cover image sizing*/
-.playlist-playlist-playlistImageContainer, .main-entityHeader-imageContainer {
-	height: 100%;
+/*Playlist image or album cover container.*/
+.main-entityHeader-imageContainer {
+	height: calc(100% - 16px);
 	width: auto;
-}
-
-/*album expanded cover image thing. first is the thing itself second is its container.*/
-.main-coverSlotExpanded-container, .t7MWRVQ5CiKOG9qsz81y {
-	width: 100%;
-}
-
-/*button size fixes*/
-.main-playButton-PlayButton {
-	--size: 48px;
-}
-
-/*end button size fixes*/
-
-.spotify__os--is-windows .nav-ylx .main-buddyFeed-content {
-	margin-top: 0;
-	padding-top: 0;
 }
 
 /*topbar pieces -> tippy top*/
@@ -131,20 +146,7 @@ button {
 	padding-bottom: 0;
 }
 
-/*this is for the main-topBar-container widgets, this container lets us move the icons!
-.hte6oQTQDvadfi5BA9eN {
-	position: fixed;
-	right: 141px;
-	top: 0px;
-}*/
-
-/* old version of this ^ which has been re-implemented because the container thing no longer exists. sigh */
-.main-topBar-container> .main-userWidget-boxCondensed, .main-topBar-container > .main-topBar-buddyFeed, .main-topBar-container > .main-noConnection {
-	position: fixed;
-	top: 0px;
-	background-color: var(--spice-shadow);
-}
-
+/*
 .main-topBar-container > .main-userWidget-boxCondensed {
 	right: 141px;
 }
@@ -156,14 +158,11 @@ button {
 .main-topBar-container > .main-noConnection {
 	right: 217px;
 }
+*/
 
-/*adjust remaining topbar*/
-.nav-ylx .main-topBar-container {
-	padding: 0 10px;
-}
-
-.queue-queuePage-queuePage, #searchPage {
-	margin-top: 64px;
+/*Scrollable pages - fix header gap. This applies to the queue/recently played page*/
+.main-view-container__scroll-node-child {
+	margin-top: -32px;
 }
 
 /*make square... i am so sad to see you go rectangles*/
